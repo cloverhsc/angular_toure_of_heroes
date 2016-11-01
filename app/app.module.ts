@@ -1,12 +1,33 @@
 import { NgModule }         from "@angular/core";
 import { BrowserModule }    from "@angular/platform-browser";
-import { FormsModule }       from "@angular/forms";
-import { AppComponent }     from "./app.component";
-import { HeroDetailComponent} from "./hero_detail.component";
+import { FormsModule }      from "@angular/forms";
+import { HttpModule }       from "@angular/http";
+
+import { AppComponent }          from "./app.component";
+import { HeroDetailComponent}    from "./hero_detail.component";
+import { HeroesComponent }       from "./heroes.component";
+import { HeroService }           from "./hero.service";
+
+// Router
+import { AppRoutingModule } from "./app-routing.module";
+
+// Dashboard
+import { DashboardComponent } from "./dashboard.component";
+
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent, HeroDetailComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [
+      BrowserModule,
+      FormsModule,
+      AppRoutingModule,
+      HttpModule,
+      InMemoryWebApiModule.forRoot(InMemoryDataService),
+  ],
+  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent ],
+  providers: [ HeroService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
