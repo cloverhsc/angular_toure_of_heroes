@@ -8,6 +8,10 @@ import { HeroDetailComponent}    from "./hero_detail.component";
 import { HeroesComponent }       from "./heroes.component";
 import { HeroService }           from "./hero.service";
 
+import { HeroSearchComponent }   from "./hero-search.component";
+
+import "./rxjs-extensions";
+
 // Router
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -15,8 +19,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { DashboardComponent } from "./dashboard.component";
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryWebApiModule } from "angular2-in-memory-web-api";
+import { InMemoryDataService }  from "./in-memory-data.service";
 
 @NgModule({
   imports: [
@@ -26,7 +30,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
       HttpModule,
       InMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
-  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent ],
+  declarations: [ AppComponent, HeroDetailComponent, HeroesComponent, DashboardComponent, HeroSearchComponent ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]
 })
